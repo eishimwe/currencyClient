@@ -1,0 +1,107 @@
+
+<div class="row" ng-show="responseQuote">
+
+    <div class="alert alert-success" role="alert" ng-show="responsePayment">Thank You.Your Order Has Been Placed</div>
+
+    <div class="panel panel-info">
+        <div class="panel-body" ng-show="payment">
+            Quotation Results:
+
+            {{ amount_to_pay }} {{ selectedPaymentCurrency.id }} = {{ quote.amount }} {{ selectedPurchasableCurrency.id }}
+        </div>
+
+        <div class="panel-body" ng-show="purchasable">
+            Quotation Results:
+
+            {{ quote.amount }} {{ selectedPaymentCurrency.id }} = {{ amount_to_purchase }} {{ selectedPurchasableCurrency.id }}
+        </div>
+
+        <div class="panel-footer">
+
+              <button class="btn btn-success" ng-click="purchaseCurrency()">Purchase!</button>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-2">
+
+        <label>Amount to Pay</label>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+
+           <label> Payment Currency</label>
+
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-2">
+        <div class="input-group">
+
+           <label>Amount to Buy</label>
+
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+           <label>Foreign Currencies</label>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div>
+
+<div class="row">
+
+    <div class="col-lg-2">
+        <div class="input-group">
+
+            <input type="text" class="form-control" placeholder="Amount" ng-model="amount_to_pay">
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+
+            <select class="form-control" ng-model="selectedPaymentCurrency" ng-options="item.name for item in paymentCurrencies track by item.id">
+                <option value="">Select a currency</option>
+            </select>
+
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-2">
+        <div class="input-group">
+
+            <input type="text" class="form-control" placeholder="Amount" ng-model="amount_to_purchase">
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+            <select class="form-control" ng-model="selectedPurchasableCurrency" ng-options="item.name for item in purchasableCurrencies track by item.id">
+                <option value="">Select a currency</option>
+            </select>
+
+          </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div>
+
+<br>
+
+<div class="row">
+
+    <div class="col-lg-4">
+        <div class="input-group">
+
+            <button class="btn btn-primary" type="button" ng-click="calculateQuote()">Request Quote!</button>
+
+        </div>
+
+    </div>
+</div>
+
